@@ -4,6 +4,8 @@ project(cnmem)
 
 # We need CUDA to build that library.
 find_package(CUDA QUIET REQUIRED)
+message(STATUS "INC ${CUDA_INCLUDE_DIRS}")
+message(STATUS "LIB ${CUDA_LIBRARIES}")
 include_directories(${CUDA_INCLUDE_DIRS})
 
 # Rules to build the cnmem library.
@@ -21,7 +23,7 @@ if(WITH_TESTS)
   # Get Google tests.
   find_package(GTest QUIET REQUIRED)
   include_directories(${GTEST_INCLUDE_DIRS})
-  
+
   # Build the executable.
   add_executable(cnmem_tests tests/cnmem_tests.cpp)
   if(MSVC)
@@ -47,4 +49,3 @@ if(WITH_TESTS)
   endif(MSVC)
 
 endif(WITH_TESTS)
-
