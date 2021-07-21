@@ -30,6 +30,13 @@ project(tritonthirdparty LANGUAGES C CXX)
 #
 # ExternalProject Dependencies
 #
+# For each ExternalProject dependency we use PATCH_COMMAND to copy the
+# project source into TRITON_THIRD_PARTY_SRC_INSTALL_PREFIX. If
+# TRITON_THIRD_PARTY_SRC_INSTALL_PREFIX is not set then source will
+# not be installed. Note that PATCH_COMMAND is executed after the
+# source is downloaded/updated and is not defined by default so it
+# allows a good point to perform the source install.
+#
 include(ExternalProject)
 
 if(NOT TRITON_THIRD_PARTY_INSTALL_PREFIX)
@@ -76,6 +83,7 @@ ExternalProject_Add(curl
     -DHTTP_ONLY:BOOL=ON
     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
     -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/curl
+  PATCH_COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/tools/install_src.py --src <SOURCE_DIR> --dest ${TRITON_THIRD_PARTY_SRC_INSTALL_PREFIX}
 )
 
 #
