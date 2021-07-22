@@ -345,44 +345,44 @@ set(GCS_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}
 #
 # Build google-cloud-cpp
 #
-ExternalProject_Add(google-cloud-cpp
-  PREFIX google-cloud-cpp
-  GIT_REPOSITORY "https://github.com/googleapis/google-cloud-cpp.git"
-  GIT_TAG "v1.22.0"
-  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/google-cloud-cpp/src/google-cloud-cpp"
-  CMAKE_CACHE_ARGS
-    ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
-    ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
-    -DGOOGLE_CLOUD_CPP_DEPENDENCY_PROVIDER:STRING=package
-    -DBUILD_TESTING:BOOL=OFF
-    -DCMAKE_PREFIX_PATH:PATH=${GCS_CMAKE_PREFIX_PATH}
-    -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
-    -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/google-cloud-cpp
-    -Dnlohmann_json_DIR:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/nlohmann_json/lib/cmake/nlohmann_json
-    -DProtobuf_DIR:PATH=${_FINDPACKAGE_PROTOBUF_CONFIG_DIR}
-    -DCrc32c_DIR:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/crc32c/lib/cmake/Crc32c
-  DEPENDS grpc c-ares protobuf crc32c absl nlohmann-json
-)
+# ExternalProject_Add(google-cloud-cpp
+#   PREFIX google-cloud-cpp
+#   GIT_REPOSITORY "https://github.com/googleapis/google-cloud-cpp.git"
+#   GIT_TAG "v1.22.0"
+#   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/google-cloud-cpp/src/google-cloud-cpp"
+#   CMAKE_CACHE_ARGS
+#     ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
+#     ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
+#     -DGOOGLE_CLOUD_CPP_DEPENDENCY_PROVIDER:STRING=package
+#     -DBUILD_TESTING:BOOL=OFF
+#     -DCMAKE_PREFIX_PATH:PATH=${GCS_CMAKE_PREFIX_PATH}
+#     -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
+#     -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/google-cloud-cpp
+#     -Dnlohmann_json_DIR:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/nlohmann_json/lib/cmake/nlohmann_json
+#     -DProtobuf_DIR:PATH=${_FINDPACKAGE_PROTOBUF_CONFIG_DIR}
+#     -DCrc32c_DIR:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/crc32c/lib/cmake/Crc32c
+#   DEPENDS grpc c-ares protobuf crc32c absl nlohmann-json
+# )
 
 #
 # Build azure-storage-cpplite
 #
-ExternalProject_Add(azure-storage-cpplite
-  PREFIX azure-storage-cpplite
-  GIT_REPOSITORY "https://github.com/Azure/azure-storage-cpplite.git"
-  GIT_TAG "v0.3.0"
-  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/azure-storage-cpplite/src/azure-storage-cpplite"
-  CMAKE_CACHE_ARGS
-    ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
-    ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
-    -DBUILD_SHARED_LIBS:BOOL=OFF
-    -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
-    -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
-    -DCURL_INCLUDE_DIR:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/curl/include
-    -DCURL_LIBRARY:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/curl/lib
-    -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/azure-storage-cpplite
-  DEPENDS curl
-)
+# ExternalProject_Add(azure-storage-cpplite
+#   PREFIX azure-storage-cpplite
+#   GIT_REPOSITORY "https://github.com/Azure/azure-storage-cpplite.git"
+#   GIT_TAG "v0.3.0"
+#   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/azure-storage-cpplite/src/azure-storage-cpplite"
+#   CMAKE_CACHE_ARGS
+#     ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
+#     ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
+#     -DBUILD_SHARED_LIBS:BOOL=OFF
+#     -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
+#     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+#     -DCURL_INCLUDE_DIR:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/curl/include
+#     -DCURL_LIBRARY:STRING=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/curl/lib
+#     -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/azure-storage-cpplite
+#   DEPENDS curl
+# )
 
 #
 # Build CNMeM (CUDA memory management library)
@@ -401,18 +401,18 @@ ExternalProject_Add(cnmem
 #
 # Build aws-sdk-cpp
 #
-ExternalProject_Add(aws-sdk-cpp
-  PREFIX aws-sdk-cpp
-  GIT_REPOSITORY "https://github.com/aws/aws-sdk-cpp.git"
-  GIT_TAG "1.7.129"
-  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/aws-sdk-cpp/src/aws-sdk-cpp"
-  CMAKE_CACHE_ARGS
-    ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
-    ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
-    -DBUILD_ONLY:STRING=s3
-    -DBUILD_SHARED_LIBS:BOOL=OFF
-    -DMINIMIZE_SIZE:BOOL=ON
-    -DENABLE_TESTING:BOOL=OFF
-    -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
-    -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/aws-sdk-cpp
-)
+# ExternalProject_Add(aws-sdk-cpp
+#   PREFIX aws-sdk-cpp
+#   GIT_REPOSITORY "https://github.com/aws/aws-sdk-cpp.git"
+#   GIT_TAG "1.7.129"
+#   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/aws-sdk-cpp/src/aws-sdk-cpp"
+#   CMAKE_CACHE_ARGS
+#     ${_CMAKE_ARGS_CMAKE_TOOLCHAIN_FILE}
+#     ${_CMAKE_ARGS_VCPKG_TARGET_TRIPLET}
+#     -DBUILD_ONLY:STRING=s3
+#     -DBUILD_SHARED_LIBS:BOOL=OFF
+#     -DMINIMIZE_SIZE:BOOL=ON
+#     -DENABLE_TESTING:BOOL=OFF
+#     -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
+#     -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_THIRD_PARTY_INSTALL_PREFIX}/aws-sdk-cpp
+# )
