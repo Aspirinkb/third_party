@@ -57,6 +57,8 @@ if (OPENSSL_ROOT_DIR)
   set(_CMAKE_ARGS_OPENSSL_ROOT_DIR "-DOPENSSL_ROOT_DIR:PATH=${OPENSSL_ROOT_DIR}")
 endif()
 
+set(ENV{HTTP_PROXY}  "http://127.0.0.1:7890")
+set(ENV{HTTPS_PROXY}  "http://127.0.0.1:7890")
 #
 # Build libcurl
 #
